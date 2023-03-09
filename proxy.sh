@@ -1,7 +1,7 @@
 #!/bin/sh
-export hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
-wslip=$(hostname -I | awk '{print $1}')
-port=7890
+export hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }') # 获取 windows 和 wsl 所在虚拟局域网环境下 windows 的 IP 地址 
+wslip=$(hostname -I | awk '{print $1}') # 获取 windows 和 wsl 所在虚拟局域网环境下 wsl ubuntu 22.04 的 IP 地址
+port=7890 # windows 代理软件的访问端口，clash 的一般是 7890，使用 v2ray 等其他软件需要修改此项
  
 PROXY_HTTP="http://${hostip}:${port}"
  
